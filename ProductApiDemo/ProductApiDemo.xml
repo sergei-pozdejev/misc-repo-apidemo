@@ -1,0 +1,128 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProductApiDemo</name>
+    </assembly>
+    <members>
+        <member name="M:ProductApiDemo.Controllers.ProductController.Get(System.Guid)">
+            <summary>
+            Returns product by <paramref name="id"/> parameter
+            </summary>
+            <param name="id">Guid of product</param>
+            <response code="200">Returns Product</response>
+            <response code="404">Product not found</response>
+            <response code="400">Invalid parameter</response>
+            <returns>Existing product</returns>
+        </member>
+        <member name="M:ProductApiDemo.Controllers.ProductController.Search(System.Int32,System.String,System.Boolean)">
+            <summary>
+            Returns paged list of not expired Products by page <paramref name="page"/> parameter and filtered by <paramref name="term"/> parameter.
+            </summary>
+            <param name="page">Page number(default pageSize is 5). Should be bigger than 0</param>
+            <param name="term">Search term. Can be part of product name or code. Can be empty</param>
+            <param name="showExpired">If true includes expired products in result. False by default</param>
+            <response code="200">Returns paged Products</response>
+            <response code="400">Invalid parameters</response>
+            <returns>A paged list of Products</returns>
+        </member>
+        <member name="M:ProductApiDemo.Controllers.ProductController.Update(System.Guid,ProductApiDemo.Models.ProductDto)">
+            <summary>
+            Updates existing product if no other product with provided code exists
+            </summary>
+            <param name="id">Product id</param>
+            <param name="product">Product json object</param>
+            <response code="200">Returns modified Product</response>
+            <response code="404">Product not found</response>
+            <response code="400">Other product with same code exists or invalid parameter</response>
+            <returns>Existing product</returns>
+        </member>
+        <member name="M:ProductApiDemo.Controllers.ProductController.Add(ProductApiDemo.Models.ProductDto)">
+            <summary>
+            Creates new product if no product with same code exists
+            </summary>
+            <param name="product">Product json object</param>
+            <response code="200">Returns new Product</response>
+            <response code="404">Product not found</response>
+            <response code="400">Product with code exists or invalid parameter</response>
+            <returns>Existing product</returns>
+        </member>
+        <member name="M:ProductApiDemo.Controllers.ProductController.Delete(System.Guid)">
+            <summary>
+            Deletes product by <paramref name="id"/> parameter
+            </summary>
+            <param name="id">Guid of product</param>
+            <response code="200">Product deleted</response>
+            <response code="404">Product not found</response>
+            <response code="400">Invalid parameter</response>
+            <returns></returns>
+        </member>
+        <member name="P:ProductApiDemo.Models.ErrorResponse.Type">
+            <summary>
+            Error type
+            </summary>
+        </member>
+        <member name="P:ProductApiDemo.Models.ErrorResponse.Title">
+            <summary>
+            Error message/title
+            </summary>
+        </member>
+        <member name="P:ProductApiDemo.Models.ErrorResponse.Status">
+            <summary>
+            Response HTTP status
+            </summary>
+        </member>
+        <member name="P:ProductApiDemo.Models.ErrorResponse.TraceId">
+            <summary>
+            Log trace id
+            </summary>
+        </member>
+        <member name="P:ProductApiDemo.Models.ErrorResponse.Errors">
+            <summary>
+            Dictionary of occured errors. 
+            Useful for validation exceptions, 
+            where field name will be Key and Value will be list of errors
+            </summary>
+        </member>
+        <member name="P:ProductApiDemo.Models.PagedResult`1.Page">
+            <summary>
+            Current page number
+            </summary>
+            <example>1</example>
+        </member>
+        <member name="P:ProductApiDemo.Models.PagedResult`1.TotalCount">
+            <summary>
+            Total item count
+            </summary>
+            <example>100</example>
+        </member>
+        <member name="P:ProductApiDemo.Models.PagedResult`1.NextPage">
+            <summary>
+            Path to next page
+            </summary>
+            <example>/Products/Search?page=1</example>
+        </member>
+        <member name="P:ProductApiDemo.Models.PagedResult`1.Items">
+            <summary>
+            List of products
+            </summary>
+        </member>
+        <member name="P:ProductApiDemo.Models.ProductDto.Name">
+            <summary>
+            Product friendly name 
+            </summary>
+            <example>Banana</example>
+        </member>
+        <member name="P:ProductApiDemo.Models.ProductDto.Code">
+            <summary>
+            Product code. Should be unique 
+            </summary>
+            <example>CB12</example>
+        </member>
+        <member name="P:ProductApiDemo.Models.ProductDto.ExpirationDate">
+            <summary>
+            Expiration date
+            </summary>
+            <example>2023-06-01</example>
+        </member>
+    </members>
+</doc>
